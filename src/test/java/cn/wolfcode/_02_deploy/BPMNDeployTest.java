@@ -63,7 +63,7 @@ public class BPMNDeployTest {
         List<Task> list = taskService.createTaskQuery()
 //                .processDefinitionKey("leave")
                 .processInstanceId("2501")
-                .taskAssignee("李四")
+                .taskAssignee("张三")
                 .active()
                 .list();
 
@@ -98,8 +98,8 @@ public class BPMNDeployTest {
                 // 基于流程定义key查询
                 .processDefinitionKey("leave")
                 // 基于任务负责人查询
-//                .processInstanceId("2501")
-                .taskAssignee("张三")
+//                .processInstanceId("7501")
+                .taskAssignee("李四")
                 // 只查询任务已完成的
                 .finished()
                 .list();
