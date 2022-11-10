@@ -70,6 +70,11 @@ public class BPMNDeployTest {
             System.out.println("负责人 = " + task.getAssignee());
             System.out.println("流程实例 id = " + task.getProcessInstanceId());
             System.out.println("流程定义 id = " + task.getProcessDefinitionId());
+
+            System.out.println("----------------------准备处理任务----------------------");
+
+            taskService.complete(task.getId());
+            System.out.println("----------------------处理任务完成----------------------");
         }
     }
 }
