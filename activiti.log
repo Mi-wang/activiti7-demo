@@ -1,0 +1,999 @@
+2022-11-10 11:06:20,372 0     [           main] INFO  activiti.engine.ProcessEngines  - Initializing process engine using configuration 'file:/E:/workspace-idea/activiti7-demo/target/classes/activiti.cfg.xml'
+2022-11-10 11:06:20,373 1     [           main] INFO  activiti.engine.ProcessEngines  - initializing process engine for resource file:/E:/workspace-idea/activiti7-demo/target/classes/activiti.cfg.xml
+2022-11-10 11:06:20,885 513   [           main] DEBUG ry.xml.XmlBeanDefinitionReader  - Loaded 2 bean definitions from InputStream resource [resource loaded through InputStream]
+2022-11-10 11:06:20,887 515   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'processEngineConfiguration'
+2022-11-10 11:06:21,103 731   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'dataSource'
+2022-11-10 11:06:21,795 1423  [           main] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2022-11-10 11:06:22,062 1690  [           main] DEBUG ProcessEngineConfigurationImpl  - database product name: 'MySQL'
+2022-11-10 11:06:22,063 1691  [           main] DEBUG ProcessEngineConfigurationImpl  - using database type: mysql
+2022-11-10 11:06:22,502 2130  [           main] DEBUG ache.ibatis.logging.LogFactory  - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2022-11-10 11:06:23,425 3053  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:06:23,425 3053  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting SchemaOperationsProcessEngineBuild --------------------------------------------------------
+2022-11-10 11:06:23,427 3055  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:06:23,434 3062  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Executing performSchemaOperationsProcessEngineBuild with setting true
+2022-11-10 11:06:23,434 3062  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:06:23,434 3062  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:06:23,439 3067  [           main] INFO  ti.engine.impl.db.DbSqlSession  - performing create on engine with resource org/activiti/db/create/activiti.mysql.create.engine.sql
+2022-11-10 11:06:23,439 3067  [           main] INFO  ti.engine.impl.db.DbSqlSession  - Found MySQL: majorVersion=5 minorVersion=6
+2022-11-10 11:06:23,440 3068  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_GE_PROPERTY ( 
+NAME_ varchar(64), 
+VALUE_ varchar(300), 
+REV_ integer, 
+primary key (NAME_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,473 3101  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: insert into ACT_GE_PROPERTY 
+values ('schema.version', '7.0.0.0', 1)
+2022-11-10 11:06:23,477 3105  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: insert into ACT_GE_PROPERTY 
+values ('schema.history', 'create(7.0.0.0)', 1)
+2022-11-10 11:06:23,477 3105  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: insert into ACT_GE_PROPERTY 
+values ('next.dbid', '1', 1)
+2022-11-10 11:06:23,478 3106  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_GE_BYTEARRAY ( 
+ID_ varchar(64), 
+REV_ integer, 
+NAME_ varchar(255), 
+DEPLOYMENT_ID_ varchar(64), 
+BYTES_ LONGBLOB, 
+GENERATED_ TINYINT, 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,496 3124  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RE_DEPLOYMENT ( 
+ID_ varchar(64), 
+NAME_ varchar(255), 
+CATEGORY_ varchar(255), 
+KEY_ varchar(255), 
+TENANT_ID_ varchar(255) default '', 
+DEPLOY_TIME_ timestamp(3) NULL, 
+ENGINE_VERSION_ varchar(255), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,515 3143  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RE_MODEL ( 
+ID_ varchar(64) not null, 
+REV_ integer, 
+NAME_ varchar(255), 
+KEY_ varchar(255), 
+CATEGORY_ varchar(255), 
+CREATE_TIME_ timestamp(3) null, 
+LAST_UPDATE_TIME_ timestamp(3) null, 
+VERSION_ integer, 
+META_INFO_ varchar(4000), 
+DEPLOYMENT_ID_ varchar(64), 
+EDITOR_SOURCE_VALUE_ID_ varchar(64), 
+EDITOR_SOURCE_EXTRA_VALUE_ID_ varchar(64), 
+TENANT_ID_ varchar(255) default '', 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,531 3159  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_EXECUTION ( 
+ID_ varchar(64), 
+REV_ integer, 
+PROC_INST_ID_ varchar(64), 
+BUSINESS_KEY_ varchar(255), 
+PARENT_ID_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+SUPER_EXEC_ varchar(64), 
+ROOT_PROC_INST_ID_ varchar(64), 
+ACT_ID_ varchar(255), 
+IS_ACTIVE_ TINYINT, 
+IS_CONCURRENT_ TINYINT, 
+IS_SCOPE_ TINYINT, 
+IS_EVENT_SCOPE_ TINYINT, 
+IS_MI_ROOT_ TINYINT, 
+SUSPENSION_STATE_ integer, 
+CACHED_ENT_STATE_ integer, 
+TENANT_ID_ varchar(255) default '', 
+NAME_ varchar(255), 
+START_TIME_ datetime(3), 
+START_USER_ID_ varchar(255), 
+LOCK_TIME_ timestamp(3) NULL, 
+IS_COUNT_ENABLED_ TINYINT, 
+EVT_SUBSCR_COUNT_ integer, 
+TASK_COUNT_ integer, 
+JOB_COUNT_ integer, 
+TIMER_JOB_COUNT_ integer, 
+SUSP_JOB_COUNT_ integer, 
+DEADLETTER_JOB_COUNT_ integer, 
+VAR_COUNT_ integer, 
+ID_LINK_COUNT_ integer, 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,546 3174  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_JOB ( 
+ID_ varchar(64) NOT NULL, 
+REV_ integer, 
+TYPE_ varchar(255) NOT NULL, 
+LOCK_EXP_TIME_ timestamp(3) NULL, 
+LOCK_OWNER_ varchar(255), 
+EXCLUSIVE_ boolean, 
+EXECUTION_ID_ varchar(64), 
+PROCESS_INSTANCE_ID_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+RETRIES_ integer, 
+EXCEPTION_STACK_ID_ varchar(64), 
+EXCEPTION_MSG_ varchar(4000), 
+DUEDATE_ timestamp(3) NULL, 
+REPEAT_ varchar(255), 
+HANDLER_TYPE_ varchar(255), 
+HANDLER_CFG_ varchar(4000), 
+TENANT_ID_ varchar(255) default '', 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,562 3190  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_TIMER_JOB ( 
+ID_ varchar(64) NOT NULL, 
+REV_ integer, 
+TYPE_ varchar(255) NOT NULL, 
+LOCK_EXP_TIME_ timestamp(3) NULL, 
+LOCK_OWNER_ varchar(255), 
+EXCLUSIVE_ boolean, 
+EXECUTION_ID_ varchar(64), 
+PROCESS_INSTANCE_ID_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+RETRIES_ integer, 
+EXCEPTION_STACK_ID_ varchar(64), 
+EXCEPTION_MSG_ varchar(4000), 
+DUEDATE_ timestamp(3) NULL, 
+REPEAT_ varchar(255), 
+HANDLER_TYPE_ varchar(255), 
+HANDLER_CFG_ varchar(4000), 
+TENANT_ID_ varchar(255) default '', 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,579 3207  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_SUSPENDED_JOB ( 
+ID_ varchar(64) NOT NULL, 
+REV_ integer, 
+TYPE_ varchar(255) NOT NULL, 
+EXCLUSIVE_ boolean, 
+EXECUTION_ID_ varchar(64), 
+PROCESS_INSTANCE_ID_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+RETRIES_ integer, 
+EXCEPTION_STACK_ID_ varchar(64), 
+EXCEPTION_MSG_ varchar(4000), 
+DUEDATE_ timestamp(3) NULL, 
+REPEAT_ varchar(255), 
+HANDLER_TYPE_ varchar(255), 
+HANDLER_CFG_ varchar(4000), 
+TENANT_ID_ varchar(255) default '', 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,595 3223  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_DEADLETTER_JOB ( 
+ID_ varchar(64) NOT NULL, 
+REV_ integer, 
+TYPE_ varchar(255) NOT NULL, 
+EXCLUSIVE_ boolean, 
+EXECUTION_ID_ varchar(64), 
+PROCESS_INSTANCE_ID_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+EXCEPTION_STACK_ID_ varchar(64), 
+EXCEPTION_MSG_ varchar(4000), 
+DUEDATE_ timestamp(3) NULL, 
+REPEAT_ varchar(255), 
+HANDLER_TYPE_ varchar(255), 
+HANDLER_CFG_ varchar(4000), 
+TENANT_ID_ varchar(255) default '', 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,611 3239  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RE_PROCDEF ( 
+ID_ varchar(64) not null, 
+REV_ integer, 
+CATEGORY_ varchar(255), 
+NAME_ varchar(255), 
+KEY_ varchar(255) not null, 
+VERSION_ integer not null, 
+DEPLOYMENT_ID_ varchar(64), 
+RESOURCE_NAME_ varchar(4000), 
+DGRM_RESOURCE_NAME_ varchar(4000), 
+DESCRIPTION_ varchar(4000), 
+HAS_START_FORM_KEY_ TINYINT, 
+HAS_GRAPHICAL_NOTATION_ TINYINT, 
+SUSPENSION_STATE_ integer, 
+TENANT_ID_ varchar(255) default '', 
+ENGINE_VERSION_ varchar(255), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,626 3254  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_TASK ( 
+ID_ varchar(64), 
+REV_ integer, 
+EXECUTION_ID_ varchar(64), 
+PROC_INST_ID_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+NAME_ varchar(255), 
+PARENT_TASK_ID_ varchar(64), 
+DESCRIPTION_ varchar(4000), 
+TASK_DEF_KEY_ varchar(255), 
+OWNER_ varchar(255), 
+ASSIGNEE_ varchar(255), 
+DELEGATION_ varchar(64), 
+PRIORITY_ integer, 
+CREATE_TIME_ timestamp(3) NULL, 
+DUE_DATE_ datetime(3), 
+CATEGORY_ varchar(255), 
+SUSPENSION_STATE_ integer, 
+TENANT_ID_ varchar(255) default '', 
+FORM_KEY_ varchar(255), 
+CLAIM_TIME_ datetime(3), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,649 3277  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_IDENTITYLINK ( 
+ID_ varchar(64), 
+REV_ integer, 
+GROUP_ID_ varchar(255), 
+TYPE_ varchar(255), 
+USER_ID_ varchar(255), 
+TASK_ID_ varchar(64), 
+PROC_INST_ID_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,673 3301  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_VARIABLE ( 
+ID_ varchar(64) not null, 
+REV_ integer, 
+TYPE_ varchar(255) not null, 
+NAME_ varchar(255) not null, 
+EXECUTION_ID_ varchar(64), 
+PROC_INST_ID_ varchar(64), 
+TASK_ID_ varchar(64), 
+BYTEARRAY_ID_ varchar(64), 
+DOUBLE_ double, 
+LONG_ bigint, 
+TEXT_ varchar(4000), 
+TEXT2_ varchar(4000), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,689 3317  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_EVENT_SUBSCR ( 
+ID_ varchar(64) not null, 
+REV_ integer, 
+EVENT_TYPE_ varchar(255) not null, 
+EVENT_NAME_ varchar(255), 
+EXECUTION_ID_ varchar(64), 
+PROC_INST_ID_ varchar(64), 
+ACTIVITY_ID_ varchar(64), 
+CONFIGURATION_ varchar(255), 
+CREATED_ timestamp(3) not null DEFAULT CURRENT_TIMESTAMP(3), 
+PROC_DEF_ID_ varchar(64), 
+TENANT_ID_ varchar(255) default '', 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,703 3331  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_EVT_LOG ( 
+LOG_NR_ bigint auto_increment, 
+TYPE_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+PROC_INST_ID_ varchar(64), 
+EXECUTION_ID_ varchar(64), 
+TASK_ID_ varchar(64), 
+TIME_STAMP_ timestamp(3) not null, 
+USER_ID_ varchar(255), 
+DATA_ LONGBLOB, 
+LOCK_OWNER_ varchar(255), 
+LOCK_TIME_ timestamp(3) null, 
+IS_PROCESSED_ tinyint default 0, 
+primary key (LOG_NR_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,720 3348  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_PROCDEF_INFO ( 
+ID_ varchar(64) not null, 
+PROC_DEF_ID_ varchar(64) not null, 
+REV_ integer, 
+INFO_JSON_ID_ varchar(64), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,736 3364  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_RU_INTEGRATION ( 
+ID_ varchar(64) not null, 
+EXECUTION_ID_ varchar(64), 
+PROCESS_INSTANCE_ID_ varchar(64), 
+PROC_DEF_ID_ varchar(64), 
+FLOW_NODE_ID_ varchar(64), 
+CREATED_DATE_ timestamp(3), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:23,751 3379  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_EXEC_BUSKEY on ACT_RU_EXECUTION(BUSINESS_KEY_)
+2022-11-10 11:06:23,768 3396  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDC_EXEC_ROOT on ACT_RU_EXECUTION(ROOT_PROC_INST_ID_)
+2022-11-10 11:06:23,782 3410  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_TASK_CREATE on ACT_RU_TASK(CREATE_TIME_)
+2022-11-10 11:06:23,798 3426  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_IDENT_LNK_USER on ACT_RU_IDENTITYLINK(USER_ID_)
+2022-11-10 11:06:23,812 3440  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_IDENT_LNK_GROUP on ACT_RU_IDENTITYLINK(GROUP_ID_)
+2022-11-10 11:06:23,825 3453  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_EVENT_SUBSCR_CONFIG_ on ACT_RU_EVENT_SUBSCR(CONFIGURATION_)
+2022-11-10 11:06:23,841 3469  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_VARIABLE_TASK_ID on ACT_RU_VARIABLE(TASK_ID_)
+2022-11-10 11:06:23,856 3484  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_ATHRZ_PROCEDEF on ACT_RU_IDENTITYLINK(PROC_DEF_ID_)
+2022-11-10 11:06:23,870 3498  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_INFO_PROCDEF on ACT_PROCDEF_INFO(PROC_DEF_ID_)
+2022-11-10 11:06:23,885 3513  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_GE_BYTEARRAY 
+add constraint ACT_FK_BYTEARR_DEPL 
+foreign key (DEPLOYMENT_ID_) 
+references ACT_RE_DEPLOYMENT (ID_)
+2022-11-10 11:06:23,927 3555  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RE_PROCDEF 
+add constraint ACT_UNIQ_PROCDEF 
+unique (KEY_,VERSION_, TENANT_ID_)
+2022-11-10 11:06:23,943 3571  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_EXECUTION 
+add constraint ACT_FK_EXE_PROCINST 
+foreign key (PROC_INST_ID_) 
+references ACT_RU_EXECUTION (ID_) on delete cascade on update cascade
+2022-11-10 11:06:23,983 3611  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_EXECUTION 
+add constraint ACT_FK_EXE_PARENT 
+foreign key (PARENT_ID_) 
+references ACT_RU_EXECUTION (ID_) on delete cascade
+2022-11-10 11:06:24,026 3654  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_EXECUTION 
+add constraint ACT_FK_EXE_SUPER 
+foreign key (SUPER_EXEC_) 
+references ACT_RU_EXECUTION (ID_) on delete cascade
+2022-11-10 11:06:24,072 3700  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_EXECUTION 
+add constraint ACT_FK_EXE_PROCDEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF (ID_)
+2022-11-10 11:06:24,121 3749  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_IDENTITYLINK 
+add constraint ACT_FK_TSKASS_TASK 
+foreign key (TASK_ID_) 
+references ACT_RU_TASK (ID_)
+2022-11-10 11:06:24,161 3789  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_IDENTITYLINK 
+add constraint ACT_FK_ATHRZ_PROCEDEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF(ID_)
+2022-11-10 11:06:24,205 3833  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_IDENTITYLINK 
+add constraint ACT_FK_IDL_PROCINST 
+foreign key (PROC_INST_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,249 3877  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_TASK 
+add constraint ACT_FK_TASK_EXE 
+foreign key (EXECUTION_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,287 3915  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_TASK 
+add constraint ACT_FK_TASK_PROCINST 
+foreign key (PROC_INST_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,331 3959  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_TASK 
+add constraint ACT_FK_TASK_PROCDEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF (ID_)
+2022-11-10 11:06:24,373 4001  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_VARIABLE 
+add constraint ACT_FK_VAR_EXE 
+foreign key (EXECUTION_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,416 4044  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_VARIABLE 
+add constraint ACT_FK_VAR_PROCINST 
+foreign key (PROC_INST_ID_) 
+references ACT_RU_EXECUTION(ID_)
+2022-11-10 11:06:24,459 4087  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_VARIABLE 
+add constraint ACT_FK_VAR_BYTEARRAY 
+foreign key (BYTEARRAY_ID_) 
+references ACT_GE_BYTEARRAY (ID_)
+2022-11-10 11:06:24,503 4131  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_JOB 
+add constraint ACT_FK_JOB_EXECUTION 
+foreign key (EXECUTION_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,542 4170  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_JOB 
+add constraint ACT_FK_JOB_PROCESS_INSTANCE 
+foreign key (PROCESS_INSTANCE_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,580 4208  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_JOB 
+add constraint ACT_FK_JOB_PROC_DEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF (ID_)
+2022-11-10 11:06:24,620 4248  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_JOB 
+add constraint ACT_FK_JOB_EXCEPTION 
+foreign key (EXCEPTION_STACK_ID_) 
+references ACT_GE_BYTEARRAY (ID_)
+2022-11-10 11:06:24,661 4289  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_TIMER_JOB 
+add constraint ACT_FK_TIMER_JOB_EXECUTION 
+foreign key (EXECUTION_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,701 4329  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_TIMER_JOB 
+add constraint ACT_FK_TIMER_JOB_PROCESS_INSTANCE 
+foreign key (PROCESS_INSTANCE_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,744 4372  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_TIMER_JOB 
+add constraint ACT_FK_TIMER_JOB_PROC_DEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF (ID_)
+2022-11-10 11:06:24,788 4416  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_TIMER_JOB 
+add constraint ACT_FK_TIMER_JOB_EXCEPTION 
+foreign key (EXCEPTION_STACK_ID_) 
+references ACT_GE_BYTEARRAY (ID_)
+2022-11-10 11:06:24,831 4459  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_SUSPENDED_JOB 
+add constraint ACT_FK_SUSPENDED_JOB_EXECUTION 
+foreign key (EXECUTION_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,871 4499  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_SUSPENDED_JOB 
+add constraint ACT_FK_SUSPENDED_JOB_PROCESS_INSTANCE 
+foreign key (PROCESS_INSTANCE_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:24,910 4538  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_SUSPENDED_JOB 
+add constraint ACT_FK_SUSPENDED_JOB_PROC_DEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF (ID_)
+2022-11-10 11:06:24,952 4580  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_SUSPENDED_JOB 
+add constraint ACT_FK_SUSPENDED_JOB_EXCEPTION 
+foreign key (EXCEPTION_STACK_ID_) 
+references ACT_GE_BYTEARRAY (ID_)
+2022-11-10 11:06:24,995 4623  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_DEADLETTER_JOB 
+add constraint ACT_FK_DEADLETTER_JOB_EXECUTION 
+foreign key (EXECUTION_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:25,032 4660  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_DEADLETTER_JOB 
+add constraint ACT_FK_DEADLETTER_JOB_PROCESS_INSTANCE 
+foreign key (PROCESS_INSTANCE_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:25,073 4701  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_DEADLETTER_JOB 
+add constraint ACT_FK_DEADLETTER_JOB_PROC_DEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF (ID_)
+2022-11-10 11:06:25,114 4742  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_DEADLETTER_JOB 
+add constraint ACT_FK_DEADLETTER_JOB_EXCEPTION 
+foreign key (EXCEPTION_STACK_ID_) 
+references ACT_GE_BYTEARRAY (ID_)
+2022-11-10 11:06:25,156 4784  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_EVENT_SUBSCR 
+add constraint ACT_FK_EVENT_EXEC 
+foreign key (EXECUTION_ID_) 
+references ACT_RU_EXECUTION(ID_)
+2022-11-10 11:06:25,193 4821  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RE_MODEL 
+add constraint ACT_FK_MODEL_SOURCE 
+foreign key (EDITOR_SOURCE_VALUE_ID_) 
+references ACT_GE_BYTEARRAY (ID_)
+2022-11-10 11:06:25,230 4858  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RE_MODEL 
+add constraint ACT_FK_MODEL_SOURCE_EXTRA 
+foreign key (EDITOR_SOURCE_EXTRA_VALUE_ID_) 
+references ACT_GE_BYTEARRAY (ID_)
+2022-11-10 11:06:25,268 4896  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RE_MODEL 
+add constraint ACT_FK_MODEL_DEPLOYMENT 
+foreign key (DEPLOYMENT_ID_) 
+references ACT_RE_DEPLOYMENT (ID_)
+2022-11-10 11:06:25,310 4938  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_PROCDEF_INFO 
+add constraint ACT_FK_INFO_JSON_BA 
+foreign key (INFO_JSON_ID_) 
+references ACT_GE_BYTEARRAY (ID_)
+2022-11-10 11:06:25,353 4981  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_PROCDEF_INFO 
+add constraint ACT_FK_INFO_PROCDEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF (ID_)
+2022-11-10 11:06:25,391 5019  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_PROCDEF_INFO 
+add constraint ACT_UNIQ_INFO_PROCDEF 
+unique (PROC_DEF_ID_)
+2022-11-10 11:06:25,406 5034  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_INTEGRATION 
+add constraint ACT_FK_INT_EXECUTION 
+foreign key (EXECUTION_ID_) 
+references ACT_RU_EXECUTION (ID_) 
+on delete cascade
+2022-11-10 11:06:25,443 5071  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_INTEGRATION 
+add constraint ACT_FK_INT_PROC_INST 
+foreign key (PROCESS_INSTANCE_ID_) 
+references ACT_RU_EXECUTION (ID_)
+2022-11-10 11:06:25,478 5106  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: alter table ACT_RU_INTEGRATION 
+add constraint ACT_FK_INT_PROC_DEF 
+foreign key (PROC_DEF_ID_) 
+references ACT_RE_PROCDEF (ID_)
+2022-11-10 11:06:25,516 5144  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - activiti db schema create for component engine successful
+2022-11-10 11:06:25,517 5145  [           main] INFO  ti.engine.impl.db.DbSqlSession  - performing create on history with resource org/activiti/db/create/activiti.mysql.create.history.sql
+2022-11-10 11:06:25,518 5146  [           main] INFO  ti.engine.impl.db.DbSqlSession  - Found MySQL: majorVersion=5 minorVersion=6
+2022-11-10 11:06:25,518 5146  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_HI_PROCINST ( 
+ID_ varchar(64) not null, 
+PROC_INST_ID_ varchar(64) not null, 
+BUSINESS_KEY_ varchar(255), 
+PROC_DEF_ID_ varchar(64) not null, 
+START_TIME_ datetime(3) not null, 
+END_TIME_ datetime(3), 
+DURATION_ bigint, 
+START_USER_ID_ varchar(255), 
+START_ACT_ID_ varchar(255), 
+END_ACT_ID_ varchar(255), 
+SUPER_PROCESS_INSTANCE_ID_ varchar(64), 
+DELETE_REASON_ varchar(4000), 
+TENANT_ID_ varchar(255) default '', 
+NAME_ varchar(255), 
+primary key (ID_), 
+unique (PROC_INST_ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:25,534 5162  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_HI_ACTINST ( 
+ID_ varchar(64) not null, 
+PROC_DEF_ID_ varchar(64) not null, 
+PROC_INST_ID_ varchar(64) not null, 
+EXECUTION_ID_ varchar(64) not null, 
+ACT_ID_ varchar(255) not null, 
+TASK_ID_ varchar(64), 
+CALL_PROC_INST_ID_ varchar(64), 
+ACT_NAME_ varchar(255), 
+ACT_TYPE_ varchar(255) not null, 
+ASSIGNEE_ varchar(255), 
+START_TIME_ datetime(3) not null, 
+END_TIME_ datetime(3), 
+DURATION_ bigint, 
+DELETE_REASON_ varchar(4000), 
+TENANT_ID_ varchar(255) default '', 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:25,552 5180  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_HI_TASKINST ( 
+ID_ varchar(64) not null, 
+PROC_DEF_ID_ varchar(64), 
+TASK_DEF_KEY_ varchar(255), 
+PROC_INST_ID_ varchar(64), 
+EXECUTION_ID_ varchar(64), 
+NAME_ varchar(255), 
+PARENT_TASK_ID_ varchar(64), 
+DESCRIPTION_ varchar(4000), 
+OWNER_ varchar(255), 
+ASSIGNEE_ varchar(255), 
+START_TIME_ datetime(3) not null, 
+CLAIM_TIME_ datetime(3), 
+END_TIME_ datetime(3), 
+DURATION_ bigint, 
+DELETE_REASON_ varchar(4000), 
+PRIORITY_ integer, 
+DUE_DATE_ datetime(3), 
+FORM_KEY_ varchar(255), 
+CATEGORY_ varchar(255), 
+TENANT_ID_ varchar(255) default '', 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:25,568 5196  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_HI_VARINST ( 
+ID_ varchar(64) not null, 
+PROC_INST_ID_ varchar(64), 
+EXECUTION_ID_ varchar(64), 
+TASK_ID_ varchar(64), 
+NAME_ varchar(255) not null, 
+VAR_TYPE_ varchar(100), 
+REV_ integer, 
+BYTEARRAY_ID_ varchar(64), 
+DOUBLE_ double, 
+LONG_ bigint, 
+TEXT_ varchar(4000), 
+TEXT2_ varchar(4000), 
+CREATE_TIME_ datetime(3), 
+LAST_UPDATED_TIME_ datetime(3), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:25,584 5212  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_HI_DETAIL ( 
+ID_ varchar(64) not null, 
+TYPE_ varchar(255) not null, 
+PROC_INST_ID_ varchar(64), 
+EXECUTION_ID_ varchar(64), 
+TASK_ID_ varchar(64), 
+ACT_INST_ID_ varchar(64), 
+NAME_ varchar(255) not null, 
+VAR_TYPE_ varchar(255), 
+REV_ integer, 
+TIME_ datetime(3) not null, 
+BYTEARRAY_ID_ varchar(64), 
+DOUBLE_ double, 
+LONG_ bigint, 
+TEXT_ varchar(4000), 
+TEXT2_ varchar(4000), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:25,599 5227  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_HI_COMMENT ( 
+ID_ varchar(64) not null, 
+TYPE_ varchar(255), 
+TIME_ datetime(3) not null, 
+USER_ID_ varchar(255), 
+TASK_ID_ varchar(64), 
+PROC_INST_ID_ varchar(64), 
+ACTION_ varchar(255), 
+MESSAGE_ varchar(4000), 
+FULL_MSG_ LONGBLOB, 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:25,617 5245  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_HI_ATTACHMENT ( 
+ID_ varchar(64) not null, 
+REV_ integer, 
+USER_ID_ varchar(255), 
+NAME_ varchar(255), 
+DESCRIPTION_ varchar(4000), 
+TYPE_ varchar(255), 
+TASK_ID_ varchar(64), 
+PROC_INST_ID_ varchar(64), 
+URL_ varchar(4000), 
+CONTENT_ID_ varchar(64), 
+TIME_ datetime(3), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:25,633 5261  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create table ACT_HI_IDENTITYLINK ( 
+ID_ varchar(64), 
+GROUP_ID_ varchar(255), 
+TYPE_ varchar(255), 
+USER_ID_ varchar(255), 
+TASK_ID_ varchar(64), 
+PROC_INST_ID_ varchar(64), 
+primary key (ID_) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin
+2022-11-10 11:06:25,648 5276  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_PRO_INST_END on ACT_HI_PROCINST(END_TIME_)
+2022-11-10 11:06:25,664 5292  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_PRO_I_BUSKEY on ACT_HI_PROCINST(BUSINESS_KEY_)
+2022-11-10 11:06:25,682 5310  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_ACT_INST_START on ACT_HI_ACTINST(START_TIME_)
+2022-11-10 11:06:25,700 5328  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_ACT_INST_END on ACT_HI_ACTINST(END_TIME_)
+2022-11-10 11:06:25,714 5342  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_DETAIL_PROC_INST on ACT_HI_DETAIL(PROC_INST_ID_)
+2022-11-10 11:06:25,736 5364  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_DETAIL_ACT_INST on ACT_HI_DETAIL(ACT_INST_ID_)
+2022-11-10 11:06:25,754 5382  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_DETAIL_TIME on ACT_HI_DETAIL(TIME_)
+2022-11-10 11:06:25,769 5397  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_DETAIL_NAME on ACT_HI_DETAIL(NAME_)
+2022-11-10 11:06:25,782 5410  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_DETAIL_TASK_ID on ACT_HI_DETAIL(TASK_ID_)
+2022-11-10 11:06:25,797 5425  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_PROCVAR_PROC_INST on ACT_HI_VARINST(PROC_INST_ID_)
+2022-11-10 11:06:25,812 5440  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_PROCVAR_NAME_TYPE on ACT_HI_VARINST(NAME_, VAR_TYPE_)
+2022-11-10 11:06:25,827 5455  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_PROCVAR_TASK_ID on ACT_HI_VARINST(TASK_ID_)
+2022-11-10 11:06:25,842 5470  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_ACT_INST_PROCINST on ACT_HI_ACTINST(PROC_INST_ID_, ACT_ID_)
+2022-11-10 11:06:25,857 5485  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_ACT_INST_EXEC on ACT_HI_ACTINST(EXECUTION_ID_, ACT_ID_)
+2022-11-10 11:06:25,872 5500  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_IDENT_LNK_USER on ACT_HI_IDENTITYLINK(USER_ID_)
+2022-11-10 11:06:25,886 5514  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_IDENT_LNK_TASK on ACT_HI_IDENTITYLINK(TASK_ID_)
+2022-11-10 11:06:25,902 5530  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_IDENT_LNK_PROCINST on ACT_HI_IDENTITYLINK(PROC_INST_ID_)
+2022-11-10 11:06:25,920 5548  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - SQL: create index ACT_IDX_HI_TASK_INST_PROCINST on ACT_HI_TASKINST(PROC_INST_ID_)
+2022-11-10 11:06:25,935 5563  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - activiti db schema create for component history successful
+2022-11-10 11:06:25,936 5564  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:06:25,936 5564  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 0 update, 0 delete.
+2022-11-10 11:06:25,936 5564  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:06:25,936 5564  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:06:25,936 5564  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:06:25,936 5564  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:06:25,936 5564  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:06:25,937 5565  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:06:25,937 5565  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- SchemaOperationsProcessEngineBuild finished --------------------------------------------------------
+2022-11-10 11:06:25,937 5565  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:06:25,937 5565  [           main] INFO  .engine.impl.ProcessEngineImpl  - ProcessEngine default created
+2022-11-10 11:06:25,941 5569  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:06:25,942 5570  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting ValidateExecutionRelatedEntityCountCfgCmd --------------------------------------------------------
+2022-11-10 11:06:25,942 5570  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:06:25,951 5579  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:06:25,951 5579  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:06:25,956 5584  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:06:25,982 5610  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: cfg.execution-related-entities-count(String)
+2022-11-10 11:06:25,998 5626  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 0
+2022-11-10 11:06:26,000 5628  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:06:26,000 5628  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert PropertyEntity[name=cfg.execution-related-entities-count, value=false]
+2022-11-10 11:06:26,000 5628  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 1 insert, 0 update, 0 delete.
+2022-11-10 11:06:26,000 5628  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:06:26,000 5628  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - inserting: PropertyEntity[name=cfg.execution-related-entities-count, value=false]
+2022-11-10 11:06:26,000 5628  [           main] DEBUG pertyEntityImpl.insertProperty  - ==>  Preparing: insert into ACT_GE_PROPERTY ( NAME_, VALUE_, REV_ ) values ( ?, ?, 1 ) 
+2022-11-10 11:06:26,002 5630  [           main] DEBUG pertyEntityImpl.insertProperty  - ==> Parameters: cfg.execution-related-entities-count(String), false(String)
+2022-11-10 11:06:26,003 5631  [           main] DEBUG pertyEntityImpl.insertProperty  - <==    Updates: 1
+2022-11-10 11:06:26,003 5631  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:06:26,003 5631  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:06:26,003 5631  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Committing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:06:26,006 5634  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:06:26,006 5634  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:06:26,006 5634  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:06:26,006 5634  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- ValidateExecutionRelatedEntityCountCfgCmd finished --------------------------------------------------------
+2022-11-10 11:06:26,007 5635  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:06:26,007 5635  [           main] INFO  activiti.engine.ProcessEngines  - initialised process engine default
+2022-11-10 11:39:38,855 0     [           main] INFO  activiti.engine.ProcessEngines  - Initializing process engine using configuration 'file:/E:/workspace-idea/activiti7-demo/target/classes/activiti.cfg.xml'
+2022-11-10 11:39:38,856 1     [           main] INFO  activiti.engine.ProcessEngines  - initializing process engine for resource file:/E:/workspace-idea/activiti7-demo/target/classes/activiti.cfg.xml
+2022-11-10 11:39:39,057 202   [           main] DEBUG ry.xml.XmlBeanDefinitionReader  - Loaded 2 bean definitions from InputStream resource [resource loaded through InputStream]
+2022-11-10 11:39:39,059 204   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'processEngineConfiguration'
+2022-11-10 11:39:39,224 369   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'dataSource'
+2022-11-10 11:39:39,453 598   [           main] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2022-11-10 11:39:39,632 777   [           main] DEBUG ProcessEngineConfigurationImpl  - database product name: 'MySQL'
+2022-11-10 11:39:39,632 777   [           main] DEBUG ProcessEngineConfigurationImpl  - using database type: mysql
+2022-11-10 11:39:40,021 1166  [           main] DEBUG ache.ibatis.logging.LogFactory  - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2022-11-10 11:39:40,506 1651  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:39:40,506 1651  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting SchemaOperationsProcessEngineBuild --------------------------------------------------------
+2022-11-10 11:39:40,508 1653  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:39:40,512 1657  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Executing performSchemaOperationsProcessEngineBuild with setting true
+2022-11-10 11:39:40,513 1658  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:39:40,513 1658  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:39:40,525 1670  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:39:40,545 1690  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: schema.version(String)
+2022-11-10 11:39:40,558 1703  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 1
+2022-11-10 11:39:40,561 1706  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:39:40,561 1706  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 0 update, 0 delete.
+2022-11-10 11:39:40,561 1706  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:39:40,561 1706  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:39:40,561 1706  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:39:40,562 1707  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:39:40,562 1707  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:39:40,562 1707  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:39:40,562 1707  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- SchemaOperationsProcessEngineBuild finished --------------------------------------------------------
+2022-11-10 11:39:40,563 1708  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:39:40,563 1708  [           main] INFO  .engine.impl.ProcessEngineImpl  - ProcessEngine default created
+2022-11-10 11:39:40,566 1711  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:39:40,566 1711  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting ValidateExecutionRelatedEntityCountCfgCmd --------------------------------------------------------
+2022-11-10 11:39:40,567 1712  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:39:40,567 1712  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:39:40,567 1712  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:39:40,567 1712  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:39:40,567 1712  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: cfg.execution-related-entities-count(String)
+2022-11-10 11:39:40,568 1713  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 1
+2022-11-10 11:39:40,568 1713  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:39:40,569 1714  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 0 update, 0 delete.
+2022-11-10 11:39:40,569 1714  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:39:40,569 1714  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:39:40,569 1714  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:39:40,569 1714  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:39:40,569 1714  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:39:40,569 1714  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:39:40,569 1714  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- ValidateExecutionRelatedEntityCountCfgCmd finished --------------------------------------------------------
+2022-11-10 11:39:40,569 1714  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:39:40,569 1714  [           main] INFO  activiti.engine.ProcessEngines  - initialised process engine default
+2022-11-10 11:39:40,570 1715  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:39:40,570 1715  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting  --------------------------------------------------------
+2022-11-10 11:39:40,570 1715  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:39:40,571 1716  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:39:40,571 1716  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:39:40,572 1717  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:39:40,572 1717  [           main] DEBUG mpl.interceptor.LogInterceptor  - ---  finished --------------------------------------------------------
+2022-11-10 11:39:40,572 1717  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:25,045 0     [           main] INFO  activiti.engine.ProcessEngines  - Initializing process engine using configuration 'file:/E:/workspace-idea/activiti7-demo/target/classes/activiti.cfg.xml'
+2022-11-10 11:40:25,046 1     [           main] INFO  activiti.engine.ProcessEngines  - initializing process engine for resource file:/E:/workspace-idea/activiti7-demo/target/classes/activiti.cfg.xml
+2022-11-10 11:40:25,254 209   [           main] DEBUG ry.xml.XmlBeanDefinitionReader  - Loaded 2 bean definitions from InputStream resource [resource loaded through InputStream]
+2022-11-10 11:40:25,256 211   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'processEngineConfiguration'
+2022-11-10 11:40:25,408 363   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'dataSource'
+2022-11-10 11:40:25,632 587   [           main] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2022-11-10 11:40:25,816 771   [           main] DEBUG ProcessEngineConfigurationImpl  - database product name: 'MySQL'
+2022-11-10 11:40:25,816 771   [           main] DEBUG ProcessEngineConfigurationImpl  - using database type: mysql
+2022-11-10 11:40:26,197 1152  [           main] DEBUG ache.ibatis.logging.LogFactory  - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2022-11-10 11:40:26,689 1644  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,689 1644  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting SchemaOperationsProcessEngineBuild --------------------------------------------------------
+2022-11-10 11:40:26,691 1646  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:40:26,695 1650  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Executing performSchemaOperationsProcessEngineBuild with setting true
+2022-11-10 11:40:26,695 1650  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:40:26,696 1651  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,709 1664  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:40:26,729 1684  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: schema.version(String)
+2022-11-10 11:40:26,740 1695  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 1
+2022-11-10 11:40:26,743 1698  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:40:26,743 1698  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 0 update, 0 delete.
+2022-11-10 11:40:26,743 1698  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:40:26,743 1698  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:40:26,743 1698  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:40:26,743 1698  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:40:26,744 1699  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,744 1699  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,744 1699  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- SchemaOperationsProcessEngineBuild finished --------------------------------------------------------
+2022-11-10 11:40:26,744 1699  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,744 1699  [           main] INFO  .engine.impl.ProcessEngineImpl  - ProcessEngine default created
+2022-11-10 11:40:26,748 1703  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,748 1703  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting ValidateExecutionRelatedEntityCountCfgCmd --------------------------------------------------------
+2022-11-10 11:40:26,748 1703  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:40:26,748 1703  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:40:26,748 1703  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,748 1703  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:40:26,749 1704  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: cfg.execution-related-entities-count(String)
+2022-11-10 11:40:26,749 1704  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 1
+2022-11-10 11:40:26,749 1704  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:40:26,749 1704  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 0 update, 0 delete.
+2022-11-10 11:40:26,749 1704  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:40:26,749 1704  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:40:26,750 1705  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:40:26,750 1705  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:40:26,750 1705  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,750 1705  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,750 1705  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- ValidateExecutionRelatedEntityCountCfgCmd finished --------------------------------------------------------
+2022-11-10 11:40:26,750 1705  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,750 1705  [           main] INFO  activiti.engine.ProcessEngines  - initialised process engine default
+2022-11-10 11:40:26,751 1706  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,751 1706  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting  --------------------------------------------------------
+2022-11-10 11:40:26,751 1706  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:40:26,752 1707  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:40:26,752 1707  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:40:26,752 1707  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:40:26,752 1707  [           main] DEBUG mpl.interceptor.LogInterceptor  - ---  finished --------------------------------------------------------
+2022-11-10 11:40:26,752 1707  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,753 1708  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,753 1708  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting DeployCmd --------------------------------------------------------
+2022-11-10 11:40:26,753 1708  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:40:26,754 1709  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,754 1709  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting GetNextIdBlockCmd --------------------------------------------------------
+2022-11-10 11:40:26,754 1709  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:40:26,754 1709  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:40:26,754 1709  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,754 1709  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:40:26,754 1709  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: next.dbid(String)
+2022-11-10 11:40:26,755 1710  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 1
+2022-11-10 11:40:26,755 1710  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:40:26,755 1710  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   update PropertyEntity[name=next.dbid, value=2501]
+2022-11-10 11:40:26,755 1710  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 1 update, 0 delete.
+2022-11-10 11:40:26,755 1710  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:40:26,755 1710  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - updating: PropertyEntity[name=next.dbid, value=2501]
+2022-11-10 11:40:26,756 1711  [           main] DEBUG pertyEntityImpl.updateProperty  - ==>  Preparing: update ACT_GE_PROPERTY SET REV_ = ?, VALUE_ = ? where NAME_ = ? and REV_ = ? 
+2022-11-10 11:40:26,756 1711  [           main] DEBUG pertyEntityImpl.updateProperty  - ==> Parameters: 2(Integer), 2501(String), next.dbid(String), 1(Integer)
+2022-11-10 11:40:26,759 1714  [           main] DEBUG pertyEntityImpl.updateProperty  - <==    Updates: 1
+2022-11-10 11:40:26,759 1714  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:40:26,759 1714  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:40:26,759 1714  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Committing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,761 1716  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:40:26,761 1716  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,762 1717  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,762 1717  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- GetNextIdBlockCmd finished --------------------------------------------------------
+2022-11-10 11:40:26,762 1717  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,762 1717  [           main] DEBUG mpl.bpmn.deployer.BpmnDeployer  - Processing deployment 请假流程
+2022-11-10 11:40:26,763 1718  [           main] DEBUG ployer.ParsedDeploymentBuilder  - Processing BPMN resource bpmn/leave.bpmn20.xml
+2022-11-10 11:40:26,940 1895  [           main] DEBUG er.handler.ProcessParseHandler  - Parsing process leave
+2022-11-10 11:40:26,944 1899  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:40:26,944 1899  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:26,945 1900  [           main] DEBUG ctLatestProcessDefinitionByKey  - ==>  Preparing: select * from ACT_RE_PROCDEF where KEY_ = ? and (TENANT_ID_ = '' or TENANT_ID_ is null) and VERSION_ = (select max(VERSION_) from ACT_RE_PROCDEF where KEY_ = ? and (TENANT_ID_ = '' or TENANT_ID_ is null)) 
+2022-11-10 11:40:26,945 1900  [           main] DEBUG ctLatestProcessDefinitionByKey  - ==> Parameters: leave(String), leave(String)
+2022-11-10 11:40:26,961 1916  [           main] DEBUG ctLatestProcessDefinitionByKey  - <==      Total: 0
+2022-11-10 11:40:26,965 1920  [           main] DEBUG ProcessDefinitionKeyNoTenantId  - ==>  Preparing: select J.* from ACT_RU_TIMER_JOB J inner join ACT_RE_PROCDEF P on J.PROC_DEF_ID_ = P.ID_ where J.HANDLER_TYPE_ = ? and P.KEY_ = ? and (P.TENANT_ID_ = '' or P.TENANT_ID_ is null) 
+2022-11-10 11:40:26,966 1921  [           main] DEBUG ProcessDefinitionKeyNoTenantId  - ==> Parameters: timer-start-event(String), leave(String)
+2022-11-10 11:40:26,967 1922  [           main] DEBUG ProcessDefinitionKeyNoTenantId  - <==      Total: 0
+2022-11-10 11:40:26,967 1922  [           main] INFO  mpl.bpmn.deployer.BpmnDeployer  - Process deployed: {id: leave:1:4, key: leave, name: leave }
+2022-11-10 11:40:26,968 1923  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,968 1923  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting GetProcessDefinitionInfoCmd --------------------------------------------------------
+2022-11-10 11:40:26,968 1923  [           main] DEBUG ptor.CommandContextInterceptor  - Valid context found. Reusing it for the current command 'org.activiti.engine.impl.cmd.GetProcessDefinitionInfoCmd'
+2022-11-10 11:40:26,968 1923  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:40:26,970 1925  [           main] DEBUG itionInfoByProcessDefinitionId  - ==>  Preparing: select * from ACT_PROCDEF_INFO where PROC_DEF_ID_ = ? 
+2022-11-10 11:40:26,970 1925  [           main] DEBUG itionInfoByProcessDefinitionId  - ==> Parameters: leave:1:4(String)
+2022-11-10 11:40:26,971 1926  [           main] DEBUG itionInfoByProcessDefinitionId  - <==      Total: 0
+2022-11-10 11:40:26,971 1926  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- GetProcessDefinitionInfoCmd finished --------------------------------------------------------
+2022-11-10 11:40:26,972 1927  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:40:26,972 1927  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:40:26,972 1927  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert ResourceEntity[id=2, name=bpmn/diagram.png]
+2022-11-10 11:40:26,972 1927  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert ResourceEntity[id=3, name=bpmn/leave.bpmn20.xml]
+2022-11-10 11:40:26,972 1927  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert ProcessDefinitionEntity[leave:1:4]
+2022-11-10 11:40:26,972 1927  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert DeploymentEntity[id=1, name=请假流程]
+2022-11-10 11:40:26,972 1927  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 4 insert, 0 update, 0 delete.
+2022-11-10 11:40:26,972 1927  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:40:26,972 1927  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - inserting: ProcessDefinitionEntity[leave:1:4]
+2022-11-10 11:40:26,973 1928  [           main] DEBUG tyImpl.insertProcessDefinition  - ==>  Preparing: insert into ACT_RE_PROCDEF(ID_, REV_, CATEGORY_, NAME_, KEY_, VERSION_, DEPLOYMENT_ID_, RESOURCE_NAME_, DGRM_RESOURCE_NAME_, DESCRIPTION_, HAS_START_FORM_KEY_, HAS_GRAPHICAL_NOTATION_ , SUSPENSION_STATE_, TENANT_ID_, ENGINE_VERSION_) values (?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-11-10 11:40:26,975 1930  [           main] DEBUG tyImpl.insertProcessDefinition  - ==> Parameters: leave:1:4(String), http://www.activiti.org/processdef(String), leave(String), leave(String), 1(Integer), 1(String), bpmn/leave.bpmn20.xml(String), null, null, false(Boolean), true(Boolean), 1(Integer), (String), null
+2022-11-10 11:40:26,976 1931  [           main] DEBUG tyImpl.insertProcessDefinition  - <==    Updates: 1
+2022-11-10 11:40:26,976 1931  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - inserting: DeploymentEntity[id=1, name=请假流程]
+2022-11-10 11:40:26,976 1931  [           main] DEBUG entEntityImpl.insertDeployment  - ==>  Preparing: insert into ACT_RE_DEPLOYMENT(ID_, NAME_, CATEGORY_, KEY_, TENANT_ID_, DEPLOY_TIME_, ENGINE_VERSION_) values(?, ?, ?, ?, ?, ?, ?) 
+2022-11-10 11:40:26,977 1932  [           main] DEBUG entEntityImpl.insertDeployment  - ==> Parameters: 1(String), 请假流程(String), null, null, (String), 2022-11-10 11:40:26.753(Timestamp), null
+2022-11-10 11:40:26,979 1934  [           main] DEBUG entEntityImpl.insertDeployment  - <==    Updates: 1
+2022-11-10 11:40:27,005 1960  [           main] DEBUG eEntityImpl.bulkInsertResource  - ==>  Preparing: INSERT INTO ACT_GE_BYTEARRAY(ID_, REV_, NAME_, BYTES_, DEPLOYMENT_ID_, GENERATED_) VALUES (?, 1, ?, ?, ?, ?) , (?, 1, ?, ?, ?, ?) 
+2022-11-10 11:40:27,006 1961  [           main] DEBUG eEntityImpl.bulkInsertResource  - ==> Parameters: 2(String), bpmn/diagram.png(String), java.io.ByteArrayInputStream@52de51b6(ByteArrayInputStream), 1(String), false(Boolean), 3(String), bpmn/leave.bpmn20.xml(String), java.io.ByteArrayInputStream@18c5069b(ByteArrayInputStream), 1(String), false(Boolean)
+2022-11-10 11:40:27,008 1963  [           main] DEBUG eEntityImpl.bulkInsertResource  - <==    Updates: 2
+2022-11-10 11:40:27,008 1963  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:40:27,008 1963  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:40:27,008 1963  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Committing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:27,011 1966  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:40:27,011 1966  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:27,011 1966  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:40:27,012 1967  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- DeployCmd finished --------------------------------------------------------
+2022-11-10 11:40:27,012 1967  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:06,963 0     [           main] INFO  activiti.engine.ProcessEngines  - Initializing process engine using configuration 'file:/E:/workspace-idea/activiti7-demo/target/classes/activiti.cfg.xml'
+2022-11-10 11:54:06,964 1     [           main] INFO  activiti.engine.ProcessEngines  - initializing process engine for resource file:/E:/workspace-idea/activiti7-demo/target/classes/activiti.cfg.xml
+2022-11-10 11:54:07,166 203   [           main] DEBUG ry.xml.XmlBeanDefinitionReader  - Loaded 2 bean definitions from InputStream resource [resource loaded through InputStream]
+2022-11-10 11:54:07,168 205   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'processEngineConfiguration'
+2022-11-10 11:54:07,328 365   [           main] DEBUG ort.DefaultListableBeanFactory  - Creating shared instance of singleton bean 'dataSource'
+2022-11-10 11:54:07,551 588   [           main] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2022-11-10 11:54:07,735 772   [           main] DEBUG ProcessEngineConfigurationImpl  - database product name: 'MySQL'
+2022-11-10 11:54:07,735 772   [           main] DEBUG ProcessEngineConfigurationImpl  - using database type: mysql
+2022-11-10 11:54:08,087 1124  [           main] DEBUG ache.ibatis.logging.LogFactory  - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2022-11-10 11:54:08,567 1604  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,567 1604  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting SchemaOperationsProcessEngineBuild --------------------------------------------------------
+2022-11-10 11:54:08,569 1606  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:54:08,573 1610  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Executing performSchemaOperationsProcessEngineBuild with setting true
+2022-11-10 11:54:08,573 1610  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:54:08,574 1611  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,586 1623  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:54:08,605 1642  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: schema.version(String)
+2022-11-10 11:54:08,616 1653  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 1
+2022-11-10 11:54:08,620 1657  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:54:08,620 1657  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 0 update, 0 delete.
+2022-11-10 11:54:08,620 1657  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:54:08,620 1657  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:54:08,620 1657  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:54:08,621 1658  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:54:08,621 1658  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,621 1658  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,621 1658  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- SchemaOperationsProcessEngineBuild finished --------------------------------------------------------
+2022-11-10 11:54:08,621 1658  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,621 1658  [           main] INFO  .engine.impl.ProcessEngineImpl  - ProcessEngine default created
+2022-11-10 11:54:08,626 1663  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,626 1663  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting ValidateExecutionRelatedEntityCountCfgCmd --------------------------------------------------------
+2022-11-10 11:54:08,626 1663  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:54:08,627 1664  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:54:08,627 1664  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,627 1664  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:54:08,627 1664  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: cfg.execution-related-entities-count(String)
+2022-11-10 11:54:08,628 1665  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 1
+2022-11-10 11:54:08,628 1665  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:54:08,628 1665  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 0 update, 0 delete.
+2022-11-10 11:54:08,628 1665  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:54:08,628 1665  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:54:08,628 1665  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:54:08,628 1665  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:54:08,629 1666  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,629 1666  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,629 1666  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- ValidateExecutionRelatedEntityCountCfgCmd finished --------------------------------------------------------
+2022-11-10 11:54:08,629 1666  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,629 1666  [           main] INFO  activiti.engine.ProcessEngines  - initialised process engine default
+2022-11-10 11:54:08,630 1667  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,630 1667  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting  --------------------------------------------------------
+2022-11-10 11:54:08,630 1667  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:54:08,631 1668  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:54:08,631 1668  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:54:08,631 1668  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:54:08,631 1668  [           main] DEBUG mpl.interceptor.LogInterceptor  - ---  finished --------------------------------------------------------
+2022-11-10 11:54:08,631 1668  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,632 1669  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,632 1669  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting DeployCmd --------------------------------------------------------
+2022-11-10 11:54:08,632 1669  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:54:08,633 1670  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,633 1670  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting GetNextIdBlockCmd --------------------------------------------------------
+2022-11-10 11:54:08,633 1670  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:54:08,633 1670  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:54:08,633 1670  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,634 1671  [           main] DEBUG pertyEntityImpl.selectProperty  - ==>  Preparing: select * from ACT_GE_PROPERTY where NAME_ = ? 
+2022-11-10 11:54:08,634 1671  [           main] DEBUG pertyEntityImpl.selectProperty  - ==> Parameters: next.dbid(String)
+2022-11-10 11:54:08,634 1671  [           main] DEBUG pertyEntityImpl.selectProperty  - <==      Total: 1
+2022-11-10 11:54:08,635 1672  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:54:08,635 1672  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   update PropertyEntity[name=next.dbid, value=5001]
+2022-11-10 11:54:08,635 1672  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 0 insert, 1 update, 0 delete.
+2022-11-10 11:54:08,635 1672  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:54:08,635 1672  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - updating: PropertyEntity[name=next.dbid, value=5001]
+2022-11-10 11:54:08,635 1672  [           main] DEBUG pertyEntityImpl.updateProperty  - ==>  Preparing: update ACT_GE_PROPERTY SET REV_ = ?, VALUE_ = ? where NAME_ = ? and REV_ = ? 
+2022-11-10 11:54:08,636 1673  [           main] DEBUG pertyEntityImpl.updateProperty  - ==> Parameters: 3(Integer), 5001(String), next.dbid(String), 2(Integer)
+2022-11-10 11:54:08,637 1674  [           main] DEBUG pertyEntityImpl.updateProperty  - <==    Updates: 1
+2022-11-10 11:54:08,637 1674  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:54:08,637 1674  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:54:08,637 1674  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Committing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,647 1684  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:54:08,647 1684  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,648 1685  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,648 1685  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- GetNextIdBlockCmd finished --------------------------------------------------------
+2022-11-10 11:54:08,648 1685  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,648 1685  [           main] DEBUG mpl.bpmn.deployer.BpmnDeployer  - Processing deployment 请假流程
+2022-11-10 11:54:08,649 1686  [           main] DEBUG ployer.ParsedDeploymentBuilder  - Processing BPMN resource bpmn/leave.bpmn20.xml
+2022-11-10 11:54:08,733 1770  [           main] DEBUG er.handler.ProcessParseHandler  - Parsing process leave
+2022-11-10 11:54:08,736 1773  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Opening JDBC Connection
+2022-11-10 11:54:08,736 1773  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,737 1774  [           main] DEBUG ctLatestProcessDefinitionByKey  - ==>  Preparing: select * from ACT_RE_PROCDEF where KEY_ = ? and (TENANT_ID_ = '' or TENANT_ID_ is null) and VERSION_ = (select max(VERSION_) from ACT_RE_PROCDEF where KEY_ = ? and (TENANT_ID_ = '' or TENANT_ID_ is null)) 
+2022-11-10 11:54:08,737 1774  [           main] DEBUG ctLatestProcessDefinitionByKey  - ==> Parameters: leave(String), leave(String)
+2022-11-10 11:54:08,739 1776  [           main] DEBUG ctLatestProcessDefinitionByKey  - <==      Total: 1
+2022-11-10 11:54:08,795 1832  [           main] DEBUG nsByTypeAndProcessDefinitionId  - ==>  Preparing: select * from ACT_RU_EVENT_SUBSCR WHERE (EVENT_TYPE_ = ?) and PROC_DEF_ID_ = ? and EXECUTION_ID_ is null and PROC_INST_ID_ is null and (TENANT_ID_ = '' or TENANT_ID_ is null) 
+2022-11-10 11:54:08,796 1833  [           main] DEBUG nsByTypeAndProcessDefinitionId  - ==> Parameters: message(String), leave:1:4(String)
+2022-11-10 11:54:08,797 1834  [           main] DEBUG nsByTypeAndProcessDefinitionId  - <==      Total: 0
+2022-11-10 11:54:08,797 1834  [           main] DEBUG nsByTypeAndProcessDefinitionId  - ==>  Preparing: select * from ACT_RU_EVENT_SUBSCR WHERE (EVENT_TYPE_ = ?) and PROC_DEF_ID_ = ? and EXECUTION_ID_ is null and PROC_INST_ID_ is null and (TENANT_ID_ = '' or TENANT_ID_ is null) 
+2022-11-10 11:54:08,798 1835  [           main] DEBUG nsByTypeAndProcessDefinitionId  - ==> Parameters: signal(String), leave:1:4(String)
+2022-11-10 11:54:08,798 1835  [           main] DEBUG nsByTypeAndProcessDefinitionId  - <==      Total: 0
+2022-11-10 11:54:08,799 1836  [           main] DEBUG ProcessDefinitionKeyNoTenantId  - ==>  Preparing: select J.* from ACT_RU_TIMER_JOB J inner join ACT_RE_PROCDEF P on J.PROC_DEF_ID_ = P.ID_ where J.HANDLER_TYPE_ = ? and P.KEY_ = ? and (P.TENANT_ID_ = '' or P.TENANT_ID_ is null) 
+2022-11-10 11:54:08,799 1836  [           main] DEBUG ProcessDefinitionKeyNoTenantId  - ==> Parameters: timer-start-event(String), leave(String)
+2022-11-10 11:54:08,800 1837  [           main] DEBUG ProcessDefinitionKeyNoTenantId  - <==      Total: 0
+2022-11-10 11:54:08,800 1837  [           main] INFO  mpl.bpmn.deployer.BpmnDeployer  - Process deployed: {id: leave:2:2504, key: leave, name: leave }
+2022-11-10 11:54:08,801 1838  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,801 1838  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- starting GetProcessDefinitionInfoCmd --------------------------------------------------------
+2022-11-10 11:54:08,801 1838  [           main] DEBUG ptor.CommandContextInterceptor  - Valid context found. Reusing it for the current command 'org.activiti.engine.impl.cmd.GetProcessDefinitionInfoCmd'
+2022-11-10 11:54:08,801 1838  [           main] DEBUG da.DefaultActivitiEngineAgenda  - Operation class org.activiti.engine.impl.interceptor.CommandInvoker$1 added to agenda
+2022-11-10 11:54:08,802 1839  [           main] DEBUG itionInfoByProcessDefinitionId  - ==>  Preparing: select * from ACT_PROCDEF_INFO where PROC_DEF_ID_ = ? 
+2022-11-10 11:54:08,803 1840  [           main] DEBUG itionInfoByProcessDefinitionId  - ==> Parameters: leave:2:2504(String)
+2022-11-10 11:54:08,804 1841  [           main] DEBUG itionInfoByProcessDefinitionId  - <==      Total: 0
+2022-11-10 11:54:08,804 1841  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- GetProcessDefinitionInfoCmd finished --------------------------------------------------------
+2022-11-10 11:54:08,804 1841  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
+2022-11-10 11:54:08,804 1841  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - Flushing dbSqlSession
+2022-11-10 11:54:08,804 1841  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert ResourceEntity[id=2502, name=bpmn/diagram.png]
+2022-11-10 11:54:08,804 1841  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert ResourceEntity[id=2503, name=bpmn/leave.bpmn20.xml]
+2022-11-10 11:54:08,804 1841  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert ProcessDefinitionEntity[leave:2:2504]
+2022-11-10 11:54:08,804 1841  [           main] DEBUG ti.engine.impl.db.DbSqlSession  -   insert DeploymentEntity[id=2501, name=请假流程]
+2022-11-10 11:54:08,804 1841  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - flush summary: 4 insert, 0 update, 0 delete.
+2022-11-10 11:54:08,804 1841  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - now executing flush...
+2022-11-10 11:54:08,805 1842  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - inserting: ProcessDefinitionEntity[leave:2:2504]
+2022-11-10 11:54:08,805 1842  [           main] DEBUG tyImpl.insertProcessDefinition  - ==>  Preparing: insert into ACT_RE_PROCDEF(ID_, REV_, CATEGORY_, NAME_, KEY_, VERSION_, DEPLOYMENT_ID_, RESOURCE_NAME_, DGRM_RESOURCE_NAME_, DESCRIPTION_, HAS_START_FORM_KEY_, HAS_GRAPHICAL_NOTATION_ , SUSPENSION_STATE_, TENANT_ID_, ENGINE_VERSION_) values (?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-11-10 11:54:08,806 1843  [           main] DEBUG tyImpl.insertProcessDefinition  - ==> Parameters: leave:2:2504(String), http://www.activiti.org/processdef(String), leave(String), leave(String), 2(Integer), 2501(String), bpmn/leave.bpmn20.xml(String), null, null, false(Boolean), true(Boolean), 1(Integer), (String), null
+2022-11-10 11:54:08,807 1844  [           main] DEBUG tyImpl.insertProcessDefinition  - <==    Updates: 1
+2022-11-10 11:54:08,807 1844  [           main] DEBUG ti.engine.impl.db.DbSqlSession  - inserting: DeploymentEntity[id=2501, name=请假流程]
+2022-11-10 11:54:08,807 1844  [           main] DEBUG entEntityImpl.insertDeployment  - ==>  Preparing: insert into ACT_RE_DEPLOYMENT(ID_, NAME_, CATEGORY_, KEY_, TENANT_ID_, DEPLOY_TIME_, ENGINE_VERSION_) values(?, ?, ?, ?, ?, ?, ?) 
+2022-11-10 11:54:08,808 1845  [           main] DEBUG entEntityImpl.insertDeployment  - ==> Parameters: 2501(String), 请假流程(String), null, null, (String), 2022-11-10 11:54:08.632(Timestamp), null
+2022-11-10 11:54:08,809 1846  [           main] DEBUG entEntityImpl.insertDeployment  - <==    Updates: 1
+2022-11-10 11:54:08,811 1848  [           main] DEBUG eEntityImpl.bulkInsertResource  - ==>  Preparing: INSERT INTO ACT_GE_BYTEARRAY(ID_, REV_, NAME_, BYTES_, DEPLOYMENT_ID_, GENERATED_) VALUES (?, 1, ?, ?, ?, ?) , (?, 1, ?, ?, ?, ?) 
+2022-11-10 11:54:08,812 1849  [           main] DEBUG eEntityImpl.bulkInsertResource  - ==> Parameters: 2502(String), bpmn/diagram.png(String), java.io.ByteArrayInputStream@1506f20f(ByteArrayInputStream), 2501(String), false(Boolean), 2503(String), bpmn/leave.bpmn20.xml(String), java.io.ByteArrayInputStream@47a5b70d(ByteArrayInputStream), 2501(String), false(Boolean)
+2022-11-10 11:54:08,813 1850  [           main] DEBUG eEntityImpl.bulkInsertResource  - <==    Updates: 2
+2022-11-10 11:54:08,813 1850  [           main] DEBUG aloneMybatisTransactionContext  - firing event committing...
+2022-11-10 11:54:08,814 1851  [           main] DEBUG aloneMybatisTransactionContext  - committing the ibatis sql session...
+2022-11-10 11:54:08,814 1851  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Committing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,817 1854  [           main] DEBUG aloneMybatisTransactionContext  - firing event committed...
+2022-11-10 11:54:08,818 1855  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,818 1855  [           main] DEBUG ansaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@3568f9d2]
+2022-11-10 11:54:08,818 1855  [           main] DEBUG mpl.interceptor.LogInterceptor  - --- DeployCmd finished --------------------------------------------------------
+2022-11-10 11:54:08,818 1855  [           main] DEBUG mpl.interceptor.LogInterceptor  - 
+
