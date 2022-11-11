@@ -15,7 +15,7 @@ import java.util.List;
  * @version 1.0
  * @date 2022/11/10 11:33
  */
-public class BPMNDeployTest {
+public class ActivitiesTest {
 
     @Test
     public void deployTest() throws Exception {
@@ -61,8 +61,8 @@ public class BPMNDeployTest {
         TaskService taskService = engine.getTaskService();
         // 3.基于流程实例/定义id禅心指定用户的待办任务
         List<Task> list = taskService.createTaskQuery()
-//                .processDefinitionKey("leave")
-                .processInstanceId("2501")
+                .processDefinitionKey("leave")
+//                .processInstanceId("2501")
                 .taskAssignee("张三")
                 .active()
                 .list();

@@ -66,6 +66,6 @@ public class ProcessDefinitionTest {
         // 需求： 删除指定目录流程
         ProcessEngine engine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = engine.getRepositoryService();
-        repositoryService.deleteDeployment("10001");
+        repositoryService.deleteDeployment("1",true);
     }
 }
